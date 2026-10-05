@@ -16,38 +16,84 @@
     height: 100%;
     overflow: hidden;
     background: #F8FAFC;
-    font-family: Arial, sans-serif;
+    font-family: Roboto, Arial, sans-serif;
   }
 
   .ticker {
     width: 100%;
-    height: 34px;
+    height: 30px;
     overflow: hidden;
     white-space: nowrap;
     display: flex;
     align-items: center;
     border-top: 1px solid #E2E8F0;
     border-bottom: 1px solid #E2E8F0;
-    color: #475467;
   }
 
   .ticker-text {
     display: inline-block;
     white-space: nowrap;
     padding-left: 100%;
-    font-size: 12px;
-    animation: scroll 32s linear infinite;
+    font-size: 11px;
+    font-weight: 400;
+    animation: scroll 38s linear infinite;
   }
 
-  .title {
-    color: #1D4ED8;
+  .guide {
+    color: #344054;
     font-weight: 700;
+  }
+
+  .new {
+    color: #137A4A;
+    font-weight: 500;
+  }
+
+  .upgrade {
+    color: #6941C6;
+    font-weight: 500;
+  }
+
+  .renewal {
+    color: #175CD3;
+    font-weight: 500;
+  }
+
+  .part {
+    color: #B54708;
+    font-weight: 500;
+  }
+
+  .preexpiry {
+    color: #B54708;
+    font-weight: 500;
+  }
+
+  .expired {
+    color: #B42318;
+    font-weight: 500;
+  }
+
+  .unclassified {
+    color: #475467;
+    font-weight: 500;
+  }
+
+  .separator {
+    color: #98A2B3;
+    padding: 0 10px;
+  }
+
+  .description {
+    color: #667085;
+    font-weight: 400;
   }
 
   @keyframes scroll {
     0% {
       transform: translateX(0);
     }
+
     100% {
       transform: translateX(-100%);
     }
@@ -60,34 +106,42 @@
 <div class="ticker">
   <div class="ticker-text">
 
-    <span class="title">CLASSIFICATION GUIDE</span>
-    &nbsp;&nbsp;•&nbsp;&nbsp;
+    <span class="guide">CLASSIFICATION GUIDE</span>
 
-    <b>NEW BUSINESS</b> = New Sales
+    <span class="separator">•</span>
 
-    &nbsp;&nbsp;•&nbsp;&nbsp;
+    <span class="new">NEW BUSINESS</span>
+    <span class="description"> = New Sales</span>
 
-    <b>EXISTING / UPGRADE</b> = Existing Customer Upgrades
+    <span class="separator">•</span>
 
-    &nbsp;&nbsp;•&nbsp;&nbsp;
+    <span class="upgrade">EXISTING / UPGRADE</span>
+    <span class="description"> = Existing Customer Upgrades</span>
 
-    <b>RENEWAL / TRANCHE</b> = Renewals &amp; Tranche Payments
+    <span class="separator">•</span>
 
-    &nbsp;&nbsp;•&nbsp;&nbsp;
+    <span class="renewal">RENEWAL / TRANCHE</span>
+    <span class="description"> = Renewals &amp; Tranche Payments</span>
 
-    <b>PART PAYMENT</b> = Partial Payment Realizations
+    <span class="separator">•</span>
 
-    &nbsp;&nbsp;•&nbsp;&nbsp;
+    <span class="part">PART PAYMENT</span>
+    <span class="description"> = Partial Payment Realizations</span>
 
-    <b>PRE-EXPIRY</b> = Before-Expiry Activity
+    <span class="separator">•</span>
 
-    &nbsp;&nbsp;•&nbsp;&nbsp;
+    <span class="preexpiry">PRE-EXPIRY</span>
+    <span class="description"> = Before-Expiry Activity</span>
 
-    <b>EXPIRED / DEACTIVATED</b> = Expired / Deactivated Activity
+    <span class="separator">•</span>
 
-    &nbsp;&nbsp;•&nbsp;&nbsp;
+    <span class="expired">EXPIRED / DEACTIVATED</span>
+    <span class="description"> = Expired / Deactivated Activity</span>
 
-    <b>UNCLASSIFIED</b> = Unmapped / Unknown Scenarios
+    <span class="separator">•</span>
+
+    <span class="unclassified">UNCLASSIFIED</span>
+    <span class="description"> = Unmapped / Unknown Scenarios</span>
 
   </div>
 </div>
