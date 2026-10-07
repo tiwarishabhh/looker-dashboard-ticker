@@ -20,6 +20,7 @@
   }
 
   .ticker {
+    position: relative;
     width: 100%;
     height: 30px;
     overflow: hidden;
@@ -35,9 +36,10 @@
     display: inline-block;
     white-space: nowrap;
     padding-left: 100%;
+    padding-right: 36px;
     font-size: 11px;
     font-weight: 400;
-    animation: scroll 21s linear infinite;
+    animation: scroll 38s linear infinite;
   }
 
   .guide {
@@ -90,6 +92,33 @@
     padding: 0 12px;
   }
 
+  .pause-btn {
+    position: absolute;
+    right: 4px;
+    top: 3px;
+    width: 24px;
+    height: 24px;
+    border: 1px solid #D0D5DD;
+    border-radius: 50%;
+    background: #FFFFFF;
+    color: #344054;
+    font-size: 11px;
+    cursor: pointer;
+    z-index: 10;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+  }
+
+  .pause-btn:hover {
+    background: #F2F4F7;
+  }
+
+  .ticker.paused .ticker-text {
+    animation-play-state: paused;
+  }
+
   @keyframes scroll {
     0% {
       transform: translateX(0);
@@ -104,62 +133,94 @@
 
 <body>
 
-<div class="ticker">
+<div class="ticker" id="ticker">
+
+  <button
+    class="pause-btn"
+    id="pauseBtn"
+    type="button"
+    title="Pause ticker"
+    aria-label="Pause ticker"
+  >
+    ⏸
+  </button>
+
   <div class="ticker-text">
 
-    <span class="guide">CLASSIFICATION GUIDE</span>
+    <span class="guide">BUSINESS CATEGORY GUIDE</span>
 
     <span class="separator">•</span>
 
     <span class="new">NEW BUSINESS</span>
     <span class="description">
-      = New Retail, New PMP/Lifetime &amp; New Multiplyrr Business
+      = New Retail, New Retail PMP, New Dhanwaan, New Dhanwaan PMP &amp; New Multiplyrr
     </span>
 
     <span class="separator">•</span>
 
     <span class="upgrade">EXISTING / UPGRADE</span>
     <span class="description">
-      = Existing Customer Product / Plan Upgrades
+      = Existing Upgrade to Retail, Retail PMP &amp; Dhanwaan PMP
     </span>
 
     <span class="separator">•</span>
 
     <span class="renewal">RENEWAL / TRANCHE</span>
     <span class="description">
-      = Customer Renewals &amp; Tranche Collections
+      = Retail Renewal Tranche 2 &amp; Dhanwaan Renewal Tranche 2
     </span>
 
     <span class="separator">•</span>
 
     <span class="part">PART PAYMENT</span>
     <span class="description">
-      = Partial / Pending Payment Collections
+      = Retail PMP Partpayment &amp; Dhanwaan PMP Partpayment
     </span>
 
     <span class="separator">•</span>
 
     <span class="preexpiry">PRE-EXPIRY</span>
     <span class="description">
-      = Business Received Before Customer Expiry
+      = Before Expiry
     </span>
 
     <span class="separator">•</span>
 
     <span class="expired">EXPIRED / DEACTIVATED</span>
     <span class="description">
-      = Business from Expired / Deactivated Customers
+      = Expired to Customer &amp; Deactivated to Customer
     </span>
 
     <span class="separator">•</span>
 
     <span class="unclassified">UNCLASSIFIED</span>
     <span class="description">
-      = Unknown / Unmapped Source Scenarios
+      = Unknown Scenario / Missing Scenario
     </span>
 
   </div>
 </div>
+
+<script>
+  const ticker = document.getElementById("ticker");
+  const pauseBtn = document.getElementById("pauseBtn");
+
+  pauseBtn.addEventListener("click", function () {
+
+    ticker.classList.toggle("paused");
+
+    if (ticker.classList.contains("paused")) {
+      pauseBtn.textContent = "▶";
+      pauseBtn.title = "Play ticker";
+      pauseBtn.setAttribute("aria-label", "Play ticker");
+    } else {
+      pauseBtn.textContent = "⏸";
+      pauseBtn.title = "Pause ticker";
+      pauseBtn.setAttribute("aria-label", "Pause ticker");
+    }
+
+  });
+</script>
 
 </body>
 </html>
