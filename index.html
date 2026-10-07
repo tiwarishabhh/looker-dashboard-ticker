@@ -5,6 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <style>
+
 * {
   box-sizing: border-box;
 }
@@ -13,37 +14,46 @@ html,
 body {
   margin: 0;
   padding: 0;
+
   width: 100%;
-  height: 48px;
+  height: 50px;
+
   overflow: hidden;
 
-  /* MATCH LOOKER SECTION */
   background: #F8FAFC;
 
   font-family: Roboto, Arial, sans-serif;
+
+  border: none;
+  outline: none;
+  box-shadow: none;
 }
 
 
-/* ==============================
+/* =========================================
    MAIN WRAPPER
-   ============================== */
+   ========================================= */
 
 .wrapper {
   width: 100%;
-  height: 48px;
+  height: 50px;
 
   display: grid;
-  grid-template-rows: 30px 18px;
+  grid-template-rows: 30px 20px;
 
   overflow: hidden;
 
   background: #F8FAFC;
+
+  border: none;
+  outline: none;
+  box-shadow: none;
 }
 
 
-/* ==============================
+/* =========================================
    TICKER
-   ============================== */
+   ========================================= */
 
 .ticker {
   grid-row: 1;
@@ -56,14 +66,16 @@ body {
 
   background: #F8FAFC;
 
-  border: 1px solid #E2E8F0;
-  border-radius: 8px;
+  border: none;
+  outline: none;
+  box-shadow: none;
+  border-radius: 0;
 }
 
 
-/* ==============================
+/* =========================================
    MOVING TEXT
-   ============================== */
+   ========================================= */
 
 .ticker-text {
   display: inline-block;
@@ -72,7 +84,7 @@ body {
   padding-left: 100%;
 
   font-size: 11px;
-  line-height: 28px;
+  line-height: 30px;
   font-weight: 400;
 
   animation: scroll 38s linear infinite;
@@ -81,9 +93,9 @@ body {
 }
 
 
-/* ==============================
+/* =========================================
    CATEGORY COLORS
-   ============================== */
+   ========================================= */
 
 .guide {
   color: #344054;
@@ -136,78 +148,91 @@ body {
 }
 
 
-/* ==============================
+/* =========================================
    CONTROL ROW
-   ============================== */
+   ========================================= */
 
 .controls {
   grid-row: 2;
 
   width: 100%;
-  height: 18px;
+  height: 20px;
 
   display: flex;
   align-items: center;
   justify-content: flex-end;
 
-  padding-right: 7px;
+  padding-right: 8px;
 
   background: #F8FAFC;
+
+  border: none;
+  outline: none;
+  box-shadow: none;
 }
 
 
-/* ==============================
-   ICON BUTTON
-   ============================== */
+/* =========================================
+   PLAY / PAUSE BUTTON
+   ========================================= */
 
 .play-pause-btn {
-  width: 24px;
-  height: 15px;
+  width: 30px;
+  height: 18px;
 
-  padding: 0;
   margin: 0;
+  padding: 0;
 
-  display: flex;
+  display: inline-flex;
   align-items: center;
   justify-content: center;
-
-  border: 1px solid #D0D5DD;
-  border-radius: 5px;
 
   background: #FFFFFF;
   color: #475467;
 
+  border: 1px solid #D0D5DD;
+  border-radius: 6px;
+
+  box-shadow: none;
+  outline: none;
+
   font-family: Arial, sans-serif;
-  font-size: 8px;
+  font-size: 10px;
   font-weight: 700;
   line-height: 1;
 
   cursor: pointer;
 }
 
+
+/* BUTTON HOVER */
+
 .play-pause-btn:hover {
   background: #F2F4F7;
-  border-color: #98A2B3;
   color: #344054;
+  border-color: #98A2B3;
 }
+
+
+/* BUTTON CLICK */
 
 .play-pause-btn:active {
   background: #E4E7EC;
 }
 
 
-/* ==============================
+/* =========================================
    PAUSED STATE
-   ============================== */
+   ========================================= */
 
 .ticker.paused .ticker-text {
   animation-play-state: paused;
 }
 
 
-/* ==============================
-   SCROLL
-   ============================== */
+/* =========================================
+   CONTINUOUS SCROLL
+   ========================================= */
 
 @keyframes scroll {
 
@@ -227,12 +252,19 @@ body {
 
 <body>
 
+
 <div class="wrapper">
 
 
-  <!-- TICKER -->
+  <!-- =====================================
+       BUSINESS CATEGORY TICKER
+       ===================================== -->
 
-  <div class="ticker" id="ticker">
+  <div
+    class="ticker"
+    id="ticker"
+  >
+
 
     <div class="ticker-text">
 
@@ -241,8 +273,13 @@ body {
         BUSINESS CATEGORY GUIDE
       </span>
 
-      <span class="separator">•</span>
 
+      <span class="separator">
+        •
+      </span>
+
+
+      <!-- NEW BUSINESS -->
 
       <span class="new">
         NEW BUSINESS
@@ -252,8 +289,13 @@ body {
         = New Retail, New Retail PMP, New Dhanwaan, New Dhanwaan PMP &amp; New Multiplyrr
       </span>
 
-      <span class="separator">•</span>
 
+      <span class="separator">
+        •
+      </span>
+
+
+      <!-- EXISTING / UPGRADE -->
 
       <span class="upgrade">
         EXISTING / UPGRADE
@@ -263,8 +305,13 @@ body {
         = Existing Upgrade to Retail, Retail PMP &amp; Dhanwaan PMP
       </span>
 
-      <span class="separator">•</span>
 
+      <span class="separator">
+        •
+      </span>
+
+
+      <!-- RENEWAL / TRANCHE -->
 
       <span class="renewal">
         RENEWAL / TRANCHE
@@ -274,8 +321,13 @@ body {
         = Retail Renewal Tranche 2 &amp; Dhanwaan Renewal Tranche 2
       </span>
 
-      <span class="separator">•</span>
 
+      <span class="separator">
+        •
+      </span>
+
+
+      <!-- PART PAYMENT -->
 
       <span class="part">
         PART PAYMENT
@@ -285,8 +337,13 @@ body {
         = Retail PMP Partpayment &amp; Dhanwaan PMP Partpayment
       </span>
 
-      <span class="separator">•</span>
 
+      <span class="separator">
+        •
+      </span>
+
+
+      <!-- PRE-EXPIRY -->
 
       <span class="preexpiry">
         PRE-EXPIRY
@@ -296,8 +353,13 @@ body {
         = Before Expiry
       </span>
 
-      <span class="separator">•</span>
 
+      <span class="separator">
+        •
+      </span>
+
+
+      <!-- EXPIRED / DEACTIVATED -->
 
       <span class="expired">
         EXPIRED / DEACTIVATED
@@ -307,8 +369,13 @@ body {
         = Expired to Customer &amp; Deactivated to Customer
       </span>
 
-      <span class="separator">•</span>
 
+      <span class="separator">
+        •
+      </span>
+
+
+      <!-- UNCLASSIFIED -->
 
       <span class="unclassified">
         UNCLASSIFIED
@@ -321,12 +388,16 @@ body {
 
     </div>
 
+
   </div>
 
 
-  <!-- ICON-ONLY PLAY / PAUSE -->
+  <!-- =====================================
+       PLAY / PAUSE CONTROL
+       ===================================== -->
 
   <div class="controls">
+
 
     <button
       id="playPauseBtn"
@@ -338,6 +409,7 @@ body {
       Ⅱ
     </button>
 
+
   </div>
 
 
@@ -346,30 +418,49 @@ body {
 
 <script>
 
-const ticker = document.getElementById("ticker");
-const button = document.getElementById("playPauseBtn");
+const ticker =
+  document.getElementById("ticker");
+
+const button =
+  document.getElementById("playPauseBtn");
+
 
 button.addEventListener("click", function () {
 
-  const paused = ticker.classList.toggle("paused");
+
+  const paused =
+    ticker.classList.toggle("paused");
+
 
   if (paused) {
 
     button.textContent = "▶";
+
     button.title = "Play";
-    button.setAttribute("aria-label", "Play");
+
+    button.setAttribute(
+      "aria-label",
+      "Play"
+    );
 
   } else {
 
     button.textContent = "Ⅱ";
+
     button.title = "Pause";
-    button.setAttribute("aria-label", "Pause");
+
+    button.setAttribute(
+      "aria-label",
+      "Pause"
+    );
 
   }
+
 
 });
 
 </script>
+
 
 </body>
 </html>
