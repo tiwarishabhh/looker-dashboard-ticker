@@ -5,235 +5,418 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <style>
-  * {
-    box-sizing: border-box;
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background: transparent;
+  font-family: Roboto, Arial, sans-serif;
+}
+
+
+/* ============================= */
+/* MAIN WRAPPER                  */
+/* ============================= */
+
+.ticker-wrapper {
+  width: 100%;
+  height: 44px;
+  display: flex;
+  flex-direction: column;
+  background: transparent;
+}
+
+
+/* ============================= */
+/* TICKER AREA                   */
+/* ============================= */
+
+.ticker {
+  width: 100%;
+  height: 28px;
+  flex: 0 0 28px;
+
+  overflow: hidden;
+  white-space: nowrap;
+
+  background: #F8FAFC;
+
+  border: 1px solid #E2E8F0;
+  border-radius: 14px;
+}
+
+
+/* ============================= */
+/* MOVING TEXT                   */
+/* ============================= */
+
+.ticker-text {
+  display: inline-block;
+  white-space: nowrap;
+
+  padding-left: 100%;
+
+  font-size: 11px;
+  line-height: 26px;
+  font-weight: 400;
+
+  animation: scroll 38s linear infinite;
+
+  will-change: transform;
+}
+
+
+/* ============================= */
+/* CLASSIFICATION COLORS         */
+/* ============================= */
+
+.guide {
+  color: #344054;
+  font-weight: 700;
+}
+
+
+.new {
+  color: #137A4A;
+  font-weight: 500;
+}
+
+
+.upgrade {
+  color: #6941C6;
+  font-weight: 500;
+}
+
+
+.renewal {
+  color: #175CD3;
+  font-weight: 500;
+}
+
+
+.part {
+  color: #B54708;
+  font-weight: 500;
+}
+
+
+.preexpiry {
+  color: #B54708;
+  font-weight: 500;
+}
+
+
+.expired {
+  color: #B42318;
+  font-weight: 500;
+}
+
+
+.unclassified {
+  color: #475467;
+  font-weight: 500;
+}
+
+
+.description {
+  color: #667085;
+  font-weight: 400;
+}
+
+
+.separator {
+  color: #98A2B3;
+  padding: 0 12px;
+}
+
+
+/* ============================= */
+/* CONTROL AREA BELOW TICKER     */
+/* ============================= */
+
+.control-row {
+  width: 100%;
+  height: 16px;
+  flex: 0 0 16px;
+
+  display: flex;
+
+  align-items: center;
+
+  /* PUT BUTTON ON RIGHT */
+  justify-content: flex-end;
+
+  padding-right: 8px;
+
+  background: transparent;
+}
+
+
+/* ============================= */
+/* PAUSE / RESUME BUTTON         */
+/* ============================= */
+
+.pause-btn {
+
+  height: 15px;
+
+  min-width: 52px;
+
+  padding: 0 8px;
+
+  margin: 0;
+
+  display: inline-flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  gap: 3px;
+
+
+  border: 1px solid #D0D5DD;
+
+  border-radius: 8px;
+
+
+  background: #F2F4F7;
+
+  color: #475467;
+
+
+  font-family: Roboto, Arial, sans-serif;
+
+  font-size: 8px;
+
+  font-weight: 600;
+
+  line-height: 13px;
+
+
+  cursor: pointer;
+
+  outline: none;
+
+  white-space: nowrap;
+}
+
+
+/* HOVER */
+
+.pause-btn:hover {
+
+  background: #E4E7EC;
+
+  color: #344054;
+
+  border-color: #98A2B3;
+
+}
+
+
+/* CLICK */
+
+.pause-btn:active {
+
+  background: #D0D5DD;
+
+}
+
+
+/* ============================= */
+/* PAUSED STATE                  */
+/* ============================= */
+
+.ticker.paused .ticker-text {
+
+  animation-play-state: paused;
+
+}
+
+
+/* ============================= */
+/* TICKER ANIMATION              */
+/* ============================= */
+
+@keyframes scroll {
+
+  0% {
+
+    transform: translateX(0);
+
   }
 
-  html,
-  body {
-    margin: 0;
-    padding: 0;
-    width: 100%;
-    height: 100%;
-    overflow: hidden;
-    background: transparent;
-    font-family: Roboto, Arial, sans-serif;
+  100% {
+
+    transform: translateX(-100%);
+
   }
 
-  .ticker-wrapper {
-    width: 100%;
-    height: 42px;
-    display: flex;
-    flex-direction: column;
-  }
+}
 
-  /* TICKER */
-  .ticker {
-    width: 100%;
-    height: 27px;
-    flex: 0 0 27px;
-    overflow: hidden;
-    white-space: nowrap;
-    background: #F8FAFC;
-    border-radius: 13px;
-  }
-
-  .ticker-text {
-    display: inline-block;
-    white-space: nowrap;
-    padding-left: 100%;
-
-    font-size: 11px;
-    line-height: 27px;
-    font-weight: 400;
-
-    animation: scroll 38s linear infinite;
-    will-change: transform;
-  }
-
-  /* CATEGORY COLORS */
-  .guide {
-    color: #344054;
-    font-weight: 700;
-  }
-
-  .new {
-    color: #137A4A;
-    font-weight: 500;
-  }
-
-  .upgrade {
-    color: #6941C6;
-    font-weight: 500;
-  }
-
-  .renewal {
-    color: #175CD3;
-    font-weight: 500;
-  }
-
-  .part {
-    color: #B54708;
-    font-weight: 500;
-  }
-
-  .preexpiry {
-    color: #B54708;
-    font-weight: 500;
-  }
-
-  .expired {
-    color: #B42318;
-    font-weight: 500;
-  }
-
-  .unclassified {
-    color: #475467;
-    font-weight: 500;
-  }
-
-  .description {
-    color: #667085;
-    font-weight: 400;
-  }
-
-  .separator {
-    color: #98A2B3;
-    padding: 0 12px;
-  }
-
-  /* CONTROL ROW */
-  .control-row {
-    width: 100%;
-    height: 15px;
-    flex: 0 0 15px;
-
-    display: flex;
-    align-items: center;
-    justify-content: flex-end;
-
-    padding-right: 6px;
-    background: transparent;
-  }
-
-  /* PAUSE / RESUME BUTTON */
-  .pause-btn {
-    height: 14px;
-    min-width: 48px;
-
-    padding: 0 7px;
-    margin: 0;
-
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    gap: 3px;
-
-    border: 1px solid #D0D5DD;
-    border-radius: 7px;
-
-    background: #F2F4F7;
-    color: #475467;
-
-    font-family: Roboto, Arial, sans-serif;
-    font-size: 8px;
-    font-weight: 500;
-    line-height: 12px;
-
-    cursor: pointer;
-    outline: none;
-  }
-
-  .pause-btn:hover {
-    background: #E4E7EC;
-    color: #344054;
-    border-color: #BFC5CE;
-  }
-
-  .pause-btn:active {
-    background: #D0D5DD;
-  }
-
-  .ticker.paused .ticker-text {
-    animation-play-state: paused;
-  }
-
-  @keyframes scroll {
-    0% {
-      transform: translateX(0);
-    }
-
-    100% {
-      transform: translateX(-100%);
-    }
-  }
 </style>
+
 </head>
+
 
 <body>
 
+
 <div class="ticker-wrapper">
 
-  <div class="ticker" id="ticker">
+
+  <!-- ========================= -->
+  <!-- MOVING CLASSIFICATION     -->
+  <!-- ========================= -->
+
+  <div
+    class="ticker"
+    id="ticker"
+  >
+
 
     <div class="ticker-text">
 
-      <span class="guide">BUSINESS CATEGORY GUIDE</span>
 
-      <span class="separator">•</span>
+      <span class="guide">
+        BUSINESS CATEGORY GUIDE
+      </span>
 
-      <span class="new">NEW BUSINESS</span>
+
+      <span class="separator">
+        •
+      </span>
+
+
+      <!-- NEW BUSINESS -->
+
+      <span class="new">
+        NEW BUSINESS
+      </span>
+
       <span class="description">
         = New Retail, New Retail PMP, New Dhanwaan, New Dhanwaan PMP &amp; New Multiplyrr
       </span>
 
-      <span class="separator">•</span>
 
-      <span class="upgrade">EXISTING / UPGRADE</span>
+      <span class="separator">
+        •
+      </span>
+
+
+      <!-- EXISTING / UPGRADE -->
+
+      <span class="upgrade">
+        EXISTING / UPGRADE
+      </span>
+
       <span class="description">
         = Existing Upgrade to Retail, Retail PMP &amp; Dhanwaan PMP
       </span>
 
-      <span class="separator">•</span>
 
-      <span class="renewal">RENEWAL / TRANCHE</span>
+      <span class="separator">
+        •
+      </span>
+
+
+      <!-- RENEWAL / TRANCHE -->
+
+      <span class="renewal">
+        RENEWAL / TRANCHE
+      </span>
+
       <span class="description">
         = Retail Renewal Tranche 2 &amp; Dhanwaan Renewal Tranche 2
       </span>
 
-      <span class="separator">•</span>
 
-      <span class="part">PART PAYMENT</span>
+      <span class="separator">
+        •
+      </span>
+
+
+      <!-- PART PAYMENT -->
+
+      <span class="part">
+        PART PAYMENT
+      </span>
+
       <span class="description">
         = Retail PMP Partpayment &amp; Dhanwaan PMP Partpayment
       </span>
 
-      <span class="separator">•</span>
 
-      <span class="preexpiry">PRE-EXPIRY</span>
+      <span class="separator">
+        •
+      </span>
+
+
+      <!-- PRE EXPIRY -->
+
+      <span class="preexpiry">
+        PRE-EXPIRY
+      </span>
+
       <span class="description">
         = Before Expiry
       </span>
 
-      <span class="separator">•</span>
 
-      <span class="expired">EXPIRED / DEACTIVATED</span>
+      <span class="separator">
+        •
+      </span>
+
+
+      <!-- EXPIRED / DEACTIVATED -->
+
+      <span class="expired">
+        EXPIRED / DEACTIVATED
+      </span>
+
       <span class="description">
         = Expired to Customer &amp; Deactivated to Customer
       </span>
 
-      <span class="separator">•</span>
 
-      <span class="unclassified">UNCLASSIFIED</span>
+      <span class="separator">
+        •
+      </span>
+
+
+      <!-- UNCLASSIFIED -->
+
+      <span class="unclassified">
+        UNCLASSIFIED
+      </span>
+
       <span class="description">
         = Unknown Scenario / Missing Scenario
       </span>
 
+
     </div>
+
 
   </div>
 
+
+
+  <!-- ========================= -->
+  <!-- PAUSE / RESUME            -->
+  <!-- ========================= -->
+
   <div class="control-row">
+
 
     <button
       class="pause-btn"
@@ -242,33 +425,80 @@
       title="Pause"
       aria-label="Pause"
     >
+
       ⏸ Pause
+
     </button>
+
 
   </div>
 
+
 </div>
 
+
+
 <script>
-  const ticker = document.getElementById("ticker");
-  const pauseBtn = document.getElementById("pauseBtn");
 
-  pauseBtn.addEventListener("click", function () {
+const ticker =
+  document.getElementById("ticker");
 
-    const isPaused = ticker.classList.toggle("paused");
+const pauseBtn =
+  document.getElementById("pauseBtn");
+
+
+pauseBtn.addEventListener(
+  "click",
+  function () {
+
+
+    const isPaused =
+      ticker.classList.toggle("paused");
+
 
     if (isPaused) {
-      pauseBtn.innerHTML = "▶ Resume";
-      pauseBtn.title = "Resume";
-      pauseBtn.setAttribute("aria-label", "Resume");
+
+
+      pauseBtn.textContent =
+        "▶ Resume";
+
+
+      pauseBtn.title =
+        "Resume";
+
+
+      pauseBtn.setAttribute(
+        "aria-label",
+        "Resume"
+      );
+
+
     } else {
-      pauseBtn.innerHTML = "⏸ Pause";
-      pauseBtn.title = "Pause";
-      pauseBtn.setAttribute("aria-label", "Pause");
+
+
+      pauseBtn.textContent =
+        "⏸ Pause";
+
+
+      pauseBtn.title =
+        "Pause";
+
+
+      pauseBtn.setAttribute(
+        "aria-label",
+        "Pause"
+      );
+
+
     }
 
-  });
+
+  }
+);
+
 </script>
 
+
 </body>
+
 </html>
