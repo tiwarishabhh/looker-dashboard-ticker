@@ -19,24 +19,27 @@
     font-family: Roboto, Arial, sans-serif;
   }
 
-  .ticker {
-    position: relative;
+  .ticker-wrapper {
     width: 100%;
-    height: 30px;
+    text-align: center;
+  }
+
+  .ticker {
+    width: 100%;
+    height: 25px;
     overflow: hidden;
     white-space: nowrap;
     display: flex;
     align-items: center;
     background: #F8FAFC;
     border: none;
-    border-radius: 15px;
+    border-radius: 12px;
   }
 
   .ticker-text {
     display: inline-block;
     white-space: nowrap;
     padding-left: 100%;
-    padding-right: 36px;
     font-size: 11px;
     font-weight: 400;
     animation: scroll 38s linear infinite;
@@ -92,27 +95,30 @@
     padding: 0 12px;
   }
 
-  .pause-btn {
-    position: absolute;
-    right: 4px;
-    top: 3px;
-    width: 24px;
-    height: 24px;
-    border: 1px solid #D0D5DD;
-    border-radius: 50%;
-    background: #FFFFFF;
-    color: #344054;
-    font-size: 11px;
-    cursor: pointer;
-    z-index: 10;
+  .control-row {
+    height: 15px;
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 0;
+  }
+
+  .pause-btn {
+    height: 14px;
+    padding: 0 7px;
+    border: 1px solid #D0D5DD;
+    border-radius: 7px;
+    background: #F2F4F7;
+    color: #475467;
+    font-family: Roboto, Arial, sans-serif;
+    font-size: 8px;
+    font-weight: 500;
+    line-height: 12px;
+    cursor: pointer;
   }
 
   .pause-btn:hover {
-    background: #F2F4F7;
+    background: #E4E7EC;
+    color: #344054;
   }
 
   .ticker.paused .ticker-text {
@@ -133,72 +139,79 @@
 
 <body>
 
-<div class="ticker" id="ticker">
+<div class="ticker-wrapper">
 
-  <button
-    class="pause-btn"
-    id="pauseBtn"
-    type="button"
-    title="Pause ticker"
-    aria-label="Pause ticker"
-  >
-    ⏸
-  </button>
+  <div class="ticker" id="ticker">
 
-  <div class="ticker-text">
+    <div class="ticker-text">
 
-    <span class="guide">BUSINESS CATEGORY GUIDE</span>
+      <span class="guide">BUSINESS CATEGORY GUIDE</span>
 
-    <span class="separator">•</span>
+      <span class="separator">•</span>
 
-    <span class="new">NEW BUSINESS</span>
-    <span class="description">
-      = New Retail, New Retail PMP, New Dhanwaan, New Dhanwaan PMP &amp; New Multiplyrr
-    </span>
+      <span class="new">NEW BUSINESS</span>
+      <span class="description">
+        = New Retail, New Retail PMP, New Dhanwaan, New Dhanwaan PMP &amp; New Multiplyrr
+      </span>
 
-    <span class="separator">•</span>
+      <span class="separator">•</span>
 
-    <span class="upgrade">EXISTING / UPGRADE</span>
-    <span class="description">
-      = Existing Upgrade to Retail, Retail PMP &amp; Dhanwaan PMP
-    </span>
+      <span class="upgrade">EXISTING / UPGRADE</span>
+      <span class="description">
+        = Existing Upgrade to Retail, Retail PMP &amp; Dhanwaan PMP
+      </span>
 
-    <span class="separator">•</span>
+      <span class="separator">•</span>
 
-    <span class="renewal">RENEWAL / TRANCHE</span>
-    <span class="description">
-      = Retail Renewal Tranche 2 &amp; Dhanwaan Renewal Tranche 2
-    </span>
+      <span class="renewal">RENEWAL / TRANCHE</span>
+      <span class="description">
+        = Retail Renewal Tranche 2 &amp; Dhanwaan Renewal Tranche 2
+      </span>
 
-    <span class="separator">•</span>
+      <span class="separator">•</span>
 
-    <span class="part">PART PAYMENT</span>
-    <span class="description">
-      = Retail PMP Partpayment &amp; Dhanwaan PMP Partpayment
-    </span>
+      <span class="part">PART PAYMENT</span>
+      <span class="description">
+        = Retail PMP Partpayment &amp; Dhanwaan PMP Partpayment
+      </span>
 
-    <span class="separator">•</span>
+      <span class="separator">•</span>
 
-    <span class="preexpiry">PRE-EXPIRY</span>
-    <span class="description">
-      = Before Expiry
-    </span>
+      <span class="preexpiry">PRE-EXPIRY</span>
+      <span class="description">
+        = Before Expiry
+      </span>
 
-    <span class="separator">•</span>
+      <span class="separator">•</span>
 
-    <span class="expired">EXPIRED / DEACTIVATED</span>
-    <span class="description">
-      = Expired to Customer &amp; Deactivated to Customer
-    </span>
+      <span class="expired">EXPIRED / DEACTIVATED</span>
+      <span class="description">
+        = Expired to Customer &amp; Deactivated to Customer
+      </span>
 
-    <span class="separator">•</span>
+      <span class="separator">•</span>
 
-    <span class="unclassified">UNCLASSIFIED</span>
-    <span class="description">
-      = Unknown Scenario / Missing Scenario
-    </span>
+      <span class="unclassified">UNCLASSIFIED</span>
+      <span class="description">
+        = Unknown Scenario / Missing Scenario
+      </span>
+
+    </div>
 
   </div>
+
+  <div class="control-row">
+    <button
+      class="pause-btn"
+      id="pauseBtn"
+      type="button"
+      title="Pause classification guide"
+      aria-label="Pause classification guide"
+    >
+      ⏸ Pause Guide
+    </button>
+  </div>
+
 </div>
 
 <script>
@@ -210,13 +223,13 @@
     ticker.classList.toggle("paused");
 
     if (ticker.classList.contains("paused")) {
-      pauseBtn.textContent = "▶";
-      pauseBtn.title = "Play ticker";
-      pauseBtn.setAttribute("aria-label", "Play ticker");
+      pauseBtn.textContent = "▶ Resume Guide";
+      pauseBtn.title = "Resume classification guide";
+      pauseBtn.setAttribute("aria-label", "Resume classification guide");
     } else {
-      pauseBtn.textContent = "⏸";
-      pauseBtn.title = "Pause ticker";
-      pauseBtn.setAttribute("aria-label", "Pause ticker");
+      pauseBtn.textContent = "⏸ Pause Guide";
+      pauseBtn.title = "Pause classification guide";
+      pauseBtn.setAttribute("aria-label", "Pause classification guide");
     }
 
   });
