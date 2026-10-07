@@ -14,16 +14,14 @@ body {
   margin: 0;
   padding: 0;
   width: 100%;
-  min-height: 50px;
+  height: 50px;
   overflow: hidden;
   background: transparent;
   font-family: Roboto, Arial, sans-serif;
 }
 
 /* ==================================================
-   COMPONENT
-   ROW 1 = TICKER
-   ROW 2 = PAUSE / RESUME
+   MAIN COMPONENT
    ================================================== */
 
 .wrapper {
@@ -36,7 +34,6 @@ body {
   overflow: hidden;
   background: transparent;
 }
-
 
 /* ==================================================
    ROW 1 - TICKER
@@ -51,11 +48,17 @@ body {
   overflow: hidden;
   white-space: nowrap;
 
-  background: #F8FAFC;
+  background: transparent;
 
   border: 1px solid #E2E8F0;
-  border-radius: 15px;
+
+  /* MATCHES DASHBOARD CONTAINER */
+  border-radius: 8px;
 }
+
+/* ==================================================
+   MOVING TEXT
+   ================================================== */
 
 .ticker-text {
   display: inline-block;
@@ -68,9 +71,9 @@ body {
   font-weight: 400;
 
   animation: scroll 38s linear infinite;
+
   will-change: transform;
 }
-
 
 /* ==================================================
    CATEGORY COLORS
@@ -126,9 +129,8 @@ body {
   padding: 0 12px;
 }
 
-
 /* ==================================================
-   ROW 2 - CONTROL
+   ROW 2 - PAUSE / RESUME
    ================================================== */
 
 .controls {
@@ -146,9 +148,8 @@ body {
   background: transparent;
 }
 
-
 /* ==================================================
-   BUTTON
+   PAUSE / RESUME BUTTON
    ================================================== */
 
 .pause-btn {
@@ -163,7 +164,9 @@ body {
   justify-content: center;
 
   border: 1px solid #D0D5DD;
-  border-radius: 9px;
+
+  /* MATCHES DASHBOARD STYLE */
+  border-radius: 6px;
 
   background: #FFFFFF;
   color: #475467;
@@ -187,7 +190,6 @@ body {
   background: #E4E7EC;
 }
 
-
 /* ==================================================
    PAUSED STATE
    ================================================== */
@@ -196,9 +198,8 @@ body {
   animation-play-state: paused;
 }
 
-
 /* ==================================================
-   ANIMATION
+   CONTINUOUS SCROLL
    ================================================== */
 
 @keyframes scroll {
@@ -216,20 +217,17 @@ body {
 </style>
 </head>
 
-
 <body>
 
 <div class="wrapper">
 
-
-  <!-- =============================================
-       ROW 1 - BUSINESS CATEGORY TICKER
-       ============================================= -->
+  <!-- ==================================================
+       BUSINESS CATEGORY GUIDE
+       ================================================== -->
 
   <div class="ticker" id="ticker">
 
     <div class="ticker-text">
-
 
       <span class="guide">
         BUSINESS CATEGORY GUIDE
@@ -237,6 +235,8 @@ body {
 
       <span class="separator">•</span>
 
+
+      <!-- NEW BUSINESS -->
 
       <span class="new">
         NEW BUSINESS
@@ -249,6 +249,8 @@ body {
       <span class="separator">•</span>
 
 
+      <!-- EXISTING / UPGRADE -->
+
       <span class="upgrade">
         EXISTING / UPGRADE
       </span>
@@ -259,6 +261,8 @@ body {
 
       <span class="separator">•</span>
 
+
+      <!-- RENEWAL / TRANCHE -->
 
       <span class="renewal">
         RENEWAL / TRANCHE
@@ -271,6 +275,8 @@ body {
       <span class="separator">•</span>
 
 
+      <!-- PART PAYMENT -->
+
       <span class="part">
         PART PAYMENT
       </span>
@@ -281,6 +287,8 @@ body {
 
       <span class="separator">•</span>
 
+
+      <!-- PRE-EXPIRY -->
 
       <span class="preexpiry">
         PRE-EXPIRY
@@ -293,6 +301,8 @@ body {
       <span class="separator">•</span>
 
 
+      <!-- EXPIRED / DEACTIVATED -->
+
       <span class="expired">
         EXPIRED / DEACTIVATED
       </span>
@@ -304,6 +314,8 @@ body {
       <span class="separator">•</span>
 
 
+      <!-- UNCLASSIFIED -->
+
       <span class="unclassified">
         UNCLASSIFIED
       </span>
@@ -312,15 +324,14 @@ body {
         = Unknown Scenario / Missing Scenario
       </span>
 
-
     </div>
 
   </div>
 
 
-  <!-- =============================================
-       ROW 2 - PAUSE / RESUME
-       ============================================= -->
+  <!-- ==================================================
+       PAUSE / RESUME - BELOW RIGHT
+       ================================================== -->
 
   <div class="controls">
 
@@ -335,7 +346,6 @@ body {
     </button>
 
   </div>
-
 
 </div>
 
