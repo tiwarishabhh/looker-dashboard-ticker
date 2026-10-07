@@ -20,36 +20,27 @@
     font-family: Roboto, Arial, sans-serif;
   }
 
-  /* COMPLETE TICKER AREA */
   .ticker-wrapper {
     width: 100%;
     height: 42px;
     display: flex;
     flex-direction: column;
-    align-items: stretch;
-    justify-content: flex-start;
-    background: transparent;
   }
 
-  /* SCROLLING AREA */
+  /* TICKER */
   .ticker {
     width: 100%;
     height: 27px;
     flex: 0 0 27px;
     overflow: hidden;
     white-space: nowrap;
-    display: block;
-    position: relative;
-
     background: #F8FAFC;
-    border: none;
     border-radius: 13px;
   }
 
   .ticker-text {
     display: inline-block;
     white-space: nowrap;
-
     padding-left: 100%;
 
     font-size: 11px;
@@ -60,67 +51,58 @@
     will-change: transform;
   }
 
-  /* CATEGORY GUIDE */
+  /* CATEGORY COLORS */
   .guide {
     color: #344054;
     font-weight: 700;
   }
 
-  /* NEW BUSINESS */
   .new {
     color: #137A4A;
     font-weight: 500;
   }
 
-  /* EXISTING / UPGRADE */
   .upgrade {
     color: #6941C6;
     font-weight: 500;
   }
 
-  /* RENEWAL / TRANCHE */
   .renewal {
     color: #175CD3;
     font-weight: 500;
   }
 
-  /* PART PAYMENT */
   .part {
     color: #B54708;
     font-weight: 500;
   }
 
-  /* PRE-EXPIRY */
   .preexpiry {
     color: #B54708;
     font-weight: 500;
   }
 
-  /* EXPIRED / DEACTIVATED */
   .expired {
     color: #B42318;
     font-weight: 500;
   }
 
-  /* UNCLASSIFIED */
   .unclassified {
     color: #475467;
     font-weight: 500;
   }
 
-  /* EXPLANATION TEXT */
   .description {
     color: #667085;
     font-weight: 400;
   }
 
-  /* SEPARATORS */
   .separator {
     color: #98A2B3;
     padding: 0 12px;
   }
 
-  /* BUTTON AREA - COMPLETELY BELOW TICKER */
+  /* CONTROL ROW */
   .control-row {
     width: 100%;
     height: 15px;
@@ -128,18 +110,19 @@
 
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: flex-end;
 
+    padding-right: 6px;
     background: transparent;
   }
 
-  /* SMALL PROFESSIONAL PAUSE BUTTON */
+  /* PAUSE / RESUME BUTTON */
   .pause-btn {
     height: 14px;
-    min-width: 67px;
+    min-width: 48px;
 
-    margin: 0;
     padding: 0 7px;
+    margin: 0;
 
     display: inline-flex;
     align-items: center;
@@ -154,8 +137,8 @@
 
     font-family: Roboto, Arial, sans-serif;
     font-size: 8px;
-    line-height: 12px;
     font-weight: 500;
+    line-height: 12px;
 
     cursor: pointer;
     outline: none;
@@ -171,12 +154,10 @@
     background: #D0D5DD;
   }
 
-  /* PAUSE ANIMATION */
   .ticker.paused .ticker-text {
     animation-play-state: paused;
   }
 
-  /* CONTINUOUS MOVEMENT */
   @keyframes scroll {
     0% {
       transform: translateX(0);
@@ -193,81 +174,57 @@
 
 <div class="ticker-wrapper">
 
-  <!-- SCROLLING TICKER -->
   <div class="ticker" id="ticker">
 
     <div class="ticker-text">
 
-      <span class="guide">
-        BUSINESS CATEGORY GUIDE
-      </span>
+      <span class="guide">BUSINESS CATEGORY GUIDE</span>
 
       <span class="separator">•</span>
 
-      <span class="new">
-        NEW BUSINESS
-      </span>
-
+      <span class="new">NEW BUSINESS</span>
       <span class="description">
         = New Retail, New Retail PMP, New Dhanwaan, New Dhanwaan PMP &amp; New Multiplyrr
       </span>
 
       <span class="separator">•</span>
 
-      <span class="upgrade">
-        EXISTING / UPGRADE
-      </span>
-
+      <span class="upgrade">EXISTING / UPGRADE</span>
       <span class="description">
         = Existing Upgrade to Retail, Retail PMP &amp; Dhanwaan PMP
       </span>
 
       <span class="separator">•</span>
 
-      <span class="renewal">
-        RENEWAL / TRANCHE
-      </span>
-
+      <span class="renewal">RENEWAL / TRANCHE</span>
       <span class="description">
         = Retail Renewal Tranche 2 &amp; Dhanwaan Renewal Tranche 2
       </span>
 
       <span class="separator">•</span>
 
-      <span class="part">
-        PART PAYMENT
-      </span>
-
+      <span class="part">PART PAYMENT</span>
       <span class="description">
         = Retail PMP Partpayment &amp; Dhanwaan PMP Partpayment
       </span>
 
       <span class="separator">•</span>
 
-      <span class="preexpiry">
-        PRE-EXPIRY
-      </span>
-
+      <span class="preexpiry">PRE-EXPIRY</span>
       <span class="description">
         = Before Expiry
       </span>
 
       <span class="separator">•</span>
 
-      <span class="expired">
-        EXPIRED / DEACTIVATED
-      </span>
-
+      <span class="expired">EXPIRED / DEACTIVATED</span>
       <span class="description">
         = Expired to Customer &amp; Deactivated to Customer
       </span>
 
       <span class="separator">•</span>
 
-      <span class="unclassified">
-        UNCLASSIFIED
-      </span>
-
+      <span class="unclassified">UNCLASSIFIED</span>
       <span class="description">
         = Unknown Scenario / Missing Scenario
       </span>
@@ -276,17 +233,16 @@
 
   </div>
 
-  <!-- PAUSE / RESUME CONTROL BELOW TICKER -->
   <div class="control-row">
 
     <button
       class="pause-btn"
       id="pauseBtn"
       type="button"
-      title="Pause classification guide"
-      aria-label="Pause classification guide"
+      title="Pause"
+      aria-label="Pause"
     >
-      ⏸ Pause Guide
+      ⏸ Pause
     </button>
 
   </div>
@@ -302,23 +258,13 @@
     const isPaused = ticker.classList.toggle("paused");
 
     if (isPaused) {
-
-      pauseBtn.innerHTML = "▶ Resume Guide";
-      pauseBtn.title = "Resume classification guide";
-      pauseBtn.setAttribute(
-        "aria-label",
-        "Resume classification guide"
-      );
-
+      pauseBtn.innerHTML = "▶ Resume";
+      pauseBtn.title = "Resume";
+      pauseBtn.setAttribute("aria-label", "Resume");
     } else {
-
-      pauseBtn.innerHTML = "⏸ Pause Guide";
-      pauseBtn.title = "Pause classification guide";
-      pauseBtn.setAttribute(
-        "aria-label",
-        "Pause classification guide"
-      );
-
+      pauseBtn.innerHTML = "⏸ Pause";
+      pauseBtn.title = "Pause";
+      pauseBtn.setAttribute("aria-label", "Pause");
     }
 
   });
