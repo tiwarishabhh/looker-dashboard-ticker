@@ -14,43 +14,68 @@ body {
   margin: 0;
   padding: 0;
   width: 100%;
-  height: 48px;
+  min-height: 50px;
   overflow: hidden;
   background: transparent;
   font-family: Roboto, Arial, sans-serif;
 }
 
-/* FULL COMPONENT */
+/* ==================================================
+   COMPONENT
+   ROW 1 = TICKER
+   ROW 2 = PAUSE / RESUME
+   ================================================== */
+
 .wrapper {
   width: 100%;
-  height: 48px;
+  height: 50px;
+
+  display: grid;
+  grid-template-rows: 30px 20px;
+
   overflow: hidden;
+  background: transparent;
 }
 
-/* TICKER */
+
+/* ==================================================
+   ROW 1 - TICKER
+   ================================================== */
+
 .ticker {
+  grid-row: 1;
+
   width: 100%;
   height: 30px;
+
   overflow: hidden;
   white-space: nowrap;
+
   background: #F8FAFC;
+
   border: 1px solid #E2E8F0;
   border-radius: 15px;
 }
 
-/* MOVING TEXT */
 .ticker-text {
   display: inline-block;
   white-space: nowrap;
+
   padding-left: 100%;
+
   font-size: 11px;
   line-height: 28px;
   font-weight: 400;
+
   animation: scroll 38s linear infinite;
   will-change: transform;
 }
 
-/* COLORS */
+
+/* ==================================================
+   CATEGORY COLORS
+   ================================================== */
+
 .guide {
   color: #344054;
   font-weight: 700;
@@ -101,21 +126,35 @@ body {
   padding: 0 12px;
 }
 
-/* BUTTON ROW - BELOW TICKER */
+
+/* ==================================================
+   ROW 2 - CONTROL
+   ================================================== */
+
 .controls {
+  grid-row: 2;
+
   width: 100%;
-  height: 18px;
+  height: 20px;
+
   display: flex;
   align-items: center;
   justify-content: flex-end;
+
   padding-right: 8px;
+
   background: transparent;
 }
 
-/* BUTTON */
+
+/* ==================================================
+   BUTTON
+   ================================================== */
+
 .pause-btn {
-  height: 16px;
-  min-width: 54px;
+  height: 17px;
+  min-width: 58px;
+
   margin: 0;
   padding: 0 8px;
 
@@ -124,7 +163,7 @@ body {
   justify-content: center;
 
   border: 1px solid #D0D5DD;
-  border-radius: 8px;
+  border-radius: 9px;
 
   background: #FFFFFF;
   color: #475467;
@@ -132,7 +171,7 @@ body {
   font-family: Roboto, Arial, sans-serif;
   font-size: 8px;
   font-weight: 600;
-  line-height: 14px;
+  line-height: 15px;
 
   cursor: pointer;
   white-space: nowrap;
@@ -148,13 +187,22 @@ body {
   background: #E4E7EC;
 }
 
-/* PAUSE ANIMATION */
+
+/* ==================================================
+   PAUSED STATE
+   ================================================== */
+
 .ticker.paused .ticker-text {
   animation-play-state: paused;
 }
 
-/* SCROLL */
+
+/* ==================================================
+   ANIMATION
+   ================================================== */
+
 @keyframes scroll {
+
   from {
     transform: translateX(0);
   }
@@ -162,24 +210,33 @@ body {
   to {
     transform: translateX(-100%);
   }
+
 }
+
 </style>
 </head>
+
 
 <body>
 
 <div class="wrapper">
 
-  <!-- TOP TICKER -->
+
+  <!-- =============================================
+       ROW 1 - BUSINESS CATEGORY TICKER
+       ============================================= -->
+
   <div class="ticker" id="ticker">
 
     <div class="ticker-text">
+
 
       <span class="guide">
         BUSINESS CATEGORY GUIDE
       </span>
 
       <span class="separator">•</span>
+
 
       <span class="new">
         NEW BUSINESS
@@ -191,6 +248,7 @@ body {
 
       <span class="separator">•</span>
 
+
       <span class="upgrade">
         EXISTING / UPGRADE
       </span>
@@ -200,6 +258,7 @@ body {
       </span>
 
       <span class="separator">•</span>
+
 
       <span class="renewal">
         RENEWAL / TRANCHE
@@ -211,6 +270,7 @@ body {
 
       <span class="separator">•</span>
 
+
       <span class="part">
         PART PAYMENT
       </span>
@@ -220,6 +280,7 @@ body {
       </span>
 
       <span class="separator">•</span>
+
 
       <span class="preexpiry">
         PRE-EXPIRY
@@ -231,6 +292,7 @@ body {
 
       <span class="separator">•</span>
 
+
       <span class="expired">
         EXPIRED / DEACTIVATED
       </span>
@@ -241,6 +303,7 @@ body {
 
       <span class="separator">•</span>
 
+
       <span class="unclassified">
         UNCLASSIFIED
       </span>
@@ -249,11 +312,16 @@ body {
         = Unknown Scenario / Missing Scenario
       </span>
 
+
     </div>
 
   </div>
 
-  <!-- BOTTOM-RIGHT CONTROL -->
+
+  <!-- =============================================
+       ROW 2 - PAUSE / RESUME
+       ============================================= -->
+
   <div class="controls">
 
     <button
@@ -268,9 +336,12 @@ body {
 
   </div>
 
+
 </div>
 
+
 <script>
+
 const ticker = document.getElementById("ticker");
 const pauseBtn = document.getElementById("pauseBtn");
 
@@ -279,16 +350,21 @@ pauseBtn.addEventListener("click", function () {
   const paused = ticker.classList.toggle("paused");
 
   if (paused) {
+
     pauseBtn.textContent = "▶ Resume";
     pauseBtn.title = "Resume";
     pauseBtn.setAttribute("aria-label", "Resume");
+
   } else {
+
     pauseBtn.textContent = "⏸ Pause";
     pauseBtn.title = "Pause";
     pauseBtn.setAttribute("aria-label", "Pause");
+
   }
 
 });
+
 </script>
 
 </body>
