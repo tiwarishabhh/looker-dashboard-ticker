@@ -6,6 +6,11 @@
 
 <style>
 
+/* =========================================
+   GLOBAL RESET
+   REMOVE ALL UNWANTED LINES / SHADOWS
+   ========================================= */
+
 * {
   box-sizing: border-box;
 }
@@ -24,9 +29,9 @@ body {
 
   font-family: Roboto, Arial, sans-serif;
 
-  border: none;
-  outline: none;
-  box-shadow: none;
+  border: 0 !important;
+  outline: 0 !important;
+  box-shadow: none !important;
 }
 
 
@@ -45,14 +50,20 @@ body {
 
   background: #F8FAFC;
 
-  border: none;
-  outline: none;
-  box-shadow: none;
+  border: 0 !important;
+  border-top: 0 !important;
+  border-right: 0 !important;
+  border-bottom: 0 !important;
+  border-left: 0 !important;
+
+  outline: 0 !important;
+  box-shadow: none !important;
 }
 
 
 /* =========================================
    TICKER
+   NO BORDER / NO LINE / NO SHADOW
    ========================================= */
 
 .ticker {
@@ -66,10 +77,16 @@ body {
 
   background: #F8FAFC;
 
-  border: none;
-  outline: none;
-  box-shadow: none;
-  border-radius: 0;
+  border: 0 !important;
+  border-top: 0 !important;
+  border-right: 0 !important;
+  border-bottom: 0 !important;
+  border-left: 0 !important;
+
+  border-radius: 0 !important;
+
+  outline: 0 !important;
+  box-shadow: none !important;
 }
 
 
@@ -90,6 +107,10 @@ body {
   animation: scroll 38s linear infinite;
 
   will-change: transform;
+
+  border: 0 !important;
+  outline: 0 !important;
+  box-shadow: none !important;
 }
 
 
@@ -150,6 +171,7 @@ body {
 
 /* =========================================
    CONTROL ROW
+   NO BORDER / NO LINE / NO SHADOW
    ========================================= */
 
 .controls {
@@ -166,14 +188,20 @@ body {
 
   background: #F8FAFC;
 
-  border: none;
-  outline: none;
-  box-shadow: none;
+  border: 0 !important;
+  border-top: 0 !important;
+  border-right: 0 !important;
+  border-bottom: 0 !important;
+  border-left: 0 !important;
+
+  outline: 0 !important;
+  box-shadow: none !important;
 }
 
 
 /* =========================================
    PLAY / PAUSE BUTTON
+   ONLY ELEMENT WITH A BORDER
    ========================================= */
 
 .play-pause-btn {
@@ -188,13 +216,14 @@ body {
   justify-content: center;
 
   background: #FFFFFF;
+
   color: #475467;
 
   border: 1px solid #D0D5DD;
   border-radius: 6px;
 
-  box-shadow: none;
   outline: none;
+  box-shadow: none;
 
   font-family: Arial, sans-serif;
   font-size: 10px;
@@ -252,18 +281,14 @@ body {
 
 <body>
 
-
 <div class="wrapper">
 
 
   <!-- =====================================
-       BUSINESS CATEGORY TICKER
+       BUSINESS CATEGORY GUIDE
        ===================================== -->
 
-  <div
-    class="ticker"
-    id="ticker"
-  >
+  <div class="ticker" id="ticker">
 
 
     <div class="ticker-text">
@@ -388,12 +413,11 @@ body {
 
     </div>
 
-
   </div>
 
 
   <!-- =====================================
-       PLAY / PAUSE CONTROL
+       PLAY / PAUSE BUTTON
        ===================================== -->
 
   <div class="controls">
@@ -427,7 +451,6 @@ const button =
 
 button.addEventListener("click", function () {
 
-
   const paused =
     ticker.classList.toggle("paused");
 
@@ -435,27 +458,16 @@ button.addEventListener("click", function () {
   if (paused) {
 
     button.textContent = "▶";
-
     button.title = "Play";
-
-    button.setAttribute(
-      "aria-label",
-      "Play"
-    );
+    button.setAttribute("aria-label", "Play");
 
   } else {
 
     button.textContent = "Ⅱ";
-
     button.title = "Pause";
-
-    button.setAttribute(
-      "aria-label",
-      "Pause"
-    );
+    button.setAttribute("aria-label", "Pause");
 
   }
-
 
 });
 
